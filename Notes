@@ -1,0 +1,104 @@
+
+Npm is used to manage all the packages used in application
+package.json will have the versions of all packages used by the app. It has pkgs with  ~/^ to auto upgrade the pkg if a new 
+version is released
+
+package-lock.json will have snapshot/exact version of packages used in production
+
+Node modules is not added to Git because package.json and package-lock.json has all the sufficient information to recreate
+the node modules on server. Hence only package.json/package-lock.json is shipped onto Git
+
+Anything that can be generated on server should be added to .gitignore
+
+Devdependencies are packages installed only on dev environment.
+Dependencies installed everywhere
+npx is execute using npm Ex: npx parcel index.html
+
+bundlers like webpack,parcel have file watchers algorithm which will update the server automatically on save. 
+Dist folder contains the minified files
+Advantages of Parcel
+1. Hot Module Reloading
+2. Bundling - all the files bundled in single file main.js/index.html/index.classes
+3. Minify
+4. clean code
+5. Super fast build algorithm
+6. Image optimization
+7. Caching while development using .parcel-cache. (Subsquent building reduces time because of the cache)
+8. Makes code compatible with older versions of browser by adding polyfills
+9. serve dev apps on https using npx parcel index.html --https
+10. Port numbers are managed by parcel
+11. consistent hashing
+12. zero config bundler
+13. Tree shaking - clean unwanted code
+
+transitive dependencies - 
+when we are building a production ready app, we need to do bundling, minificaiton, caching, optimization and to do this we need dependencies which further need some more dependencies and this dependency tree is called transitive dependencies. They are managed by package manageers
+
+How old browsers are supported
+1. There are some packages called browser-list which node modules download automatically
+2. browserlist is an array added in package.json (configuration of it is found in browserlistdev.com)
+  browserlist: [
+    'last 2 browser version'
+  ]
+
+Polyfill - Certain browsers don't support new features like ES6, so that code is replaced with a code which will  work or understood by the browser. Babel adds the polyfills. 
+
+Babel - It is a node package which converts ES6 code to javascript
+babel-plugin-transform-remove-console - Removes console logs
+
+JSX
+it is html like syntax inside js and not html inside js. It uses react.createlement behind the scenes.
+react.createElement is an object which is rendered on DOM
+JSX can have only one parent
+If I've 2 parents, then it should be wrapped in a div.
+If we don't want to wrap in div, then we can use React.fragment which is a component given by react lib
+React.fragment is like an empty tag. Instead of writing react.fragment fully u can jus write <></>
+
+Babel - a library that takes in code and convert to code. ex: takes es6 and converts to js
+  It is configured using .babelrc config file
+  Babel should be installed compulsory for jsx to work
+
+keys - unique keys are used for every react elements. React uses it to track all the elements
+
+Components
+1. Functional component - new way of writing components - Function that returns a react element/JSX
+    Name starts with capital letter
+    Its used react.render(<FunctionComponent />)
+2. Class based component - old way
+
+Component composition
+  Using a component inside a component its called component composition/ composing components/ Nested components
+
+React Hooks
+  a JS func used to create local variables
+
+Virtual DOM
+  Actual DOM is represented as tree, whenever state changes diff algorithm compares updated tree and re-renders
+  Is a JS object
+  React is fast because of its faster DOM manipulation (React fibre, diff algorithm)
+
+Reconciliation
+  Algorithm used by react to find the difference between actual and virtual DOM, and determines what should be updated and updates only that node and its children
+
+Hooks:
+1. useState
+State variables - React cannot track normal variables for change, it only tracks local state variables and rerenders on change
+  created using useState
+  when a state changes, the whole component is refreshed (also when prop changes)
+  
+
+2. UseEffect
+    - Its a react hook that accepts a callback function and dependency array (array of state variables)
+    - its called only when dependency is changed
+    - If array is empty, not dependent on anything so its called only once
+    - If nothing is passed, its called every time after render
+Never create components inside components
+Never write useState inside If - because it leads to inconsistensies
+Never write useState inside for
+Usestate should be created inisde functional component
+
+CDN is preferred to store images becoz it caches, renders faster, failure backup.
+
+React Router - npm pkg react router npm i react-router-dom
+createBrowserRouter from react-router-dom
+RouterProvider

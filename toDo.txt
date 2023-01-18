@@ -1,0 +1,5 @@
+1. parcel docs
+2. diffing technique in react - key reconcilation
+3. how jsx sanitizes code to prevent xss attack
+4. Shimmer UI
+5. JS fetch

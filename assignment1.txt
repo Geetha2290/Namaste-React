@@ -1,0 +1,44 @@
+1. What is Emmet?
+  Emmet is a plug-in for code editors that allow you to write code shortcuts and expand them into snippets. 
+  Its used by web developers to type less and save lot of time.
+
+2. What is difference between Library and Framework?
+  Both library and framework are reusable code written by someone else.
+
+  Library has a set of functions and classes which is called by the application to perform certain verbose tasks.
+  Library focuses on narrow scope and is simple. Here, the flow of application is under our control
+
+  Framework has abstract functions and classes which is implemented by the user to perform tasks. It focuses on a bigger scope, lot of
+  functionalities and is complex. Framework calls our code to perform tasks. It has everything needed to build application and we have to fill the gaps.
+  Thus the flow of application is under framework's control.
+
+3. What is CDN? Why do we use it?
+  CDN (content delivery network) is a network of servers that are geographically distributed. It is used to provide
+  reliable and speed access to the content (why are CDNs not used in real time projects)
+
+4. Why is React known as react?
+  React was developed for applications with changing data. React is developed for Front-end applications or view in MVC
+  and its named 'React' to react as the user interacts with application and changes the data
+
+5. What is crossorigin in script tag?
+  When loading react with CDN, it is recommended to set the crossorigin. It will set the http header access-control-allow-origin
+  and provide a better error handling experience
+
+6. What is diference between React and ReactDOM?
+  React is library for building UI apps and is the entry point to React APIs. All the apis can be accessed from global react.
+  ReactDOM contains DOM specific methods used by react to interact with DOM elements
+
+7. What is difference between react.development.js and react.production.js files via CDN?
+  react.development.js is unminified version. It will be slow and doesn't provide good user experience.
+  Hence minified version is used for production.
+
+8. What is async and defer?
+  Async and defer attributes are added to script tag to fetch them asynchronously.
+  1. only script tag - During HTML parsing, when script tag is encountered html parsing stops, script is fetched from servers 
+                       executed and then HTML parsing continues. This reduces the performance of the web page
+  2. Async - Here, when script tag is found, browser fetches the script in parallel with html parsing, then stops parsing the html
+             executes the script and then continues parsing. If there are multiple scripts with async, then order of  
+             execution is not guaranteed.
+  3. Defer - Here, HTML parsing continues even when script is found. browser fetches script in parallel and continues with parsing
+             Script is executed only after parsing is completed. Order of execution is guaranteed. This is one of the best approach because
+             HTML parsing is not disturbed
