@@ -34,3 +34,12 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+.search-bar {
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.search-btn {
+  margin-left: 10px;
+}

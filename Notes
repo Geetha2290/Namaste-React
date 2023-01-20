@@ -102,3 +102,18 @@ CDN is preferred to store images becoz it caches, renders faster, failure backup
 React Router - npm pkg react router npm i react-router-dom
 createBrowserRouter from react-router-dom
 RouterProvider
+-------------------------------Chapter 5--------------------------------------------
+1. Folder structure
+2. State Variables - use state hook
+
+
+Types of Exports
+1. Default export - every js will have one default export and it can imported directly
+                     export default component
+                     import component from ''
+2. Named Export - if a single const is exported , then its imported via {} and is called named exports
+                    export const test = '10'
+                    import {const} from ''
+                    import * as obj from '' and can use obj.test
+
+React has 1 way data binding
