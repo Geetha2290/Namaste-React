@@ -1,22 +1,40 @@
-import { useState } from "react"
-import {restaurantList} from '../Constants'
+import { useEffect, useState } from "react"
 
 const Body = () => {
   const [searchText, setSearchText] = useState(''); // to create local state variables and it returns variable and set method
-  const [filteredRestaurants, setFilteredRestaurantList] = useState(restaurantList)
+  const [allRestaurants, setAllRestaurants] =  useState([]);
+  const [filteredRestaurants, setFilteredRestaurantList] = useState([]);
+ 
+  useEffect(() => {
+    getRestaurants();
+  }, [])
+
+  async function getRestaurants() {
+    try {
+      const data = await fetch('https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9715987&lng=77.5945627&page_type=DESKTOP_WEB_LISTING');
+      const json = await data.json();
+      const list = json?.data?.cards[2]?.data?.data?.cards;
+      setAllRestaurants(list);
+      setFilteredRestaurantList(list);
+    }
+    catch(e) {
+      console.log('An exception occured' + e)
+    }
+  }
 
   function filterList(text, list) {
-    return list.filter(item => item.name.toLowerCase().includes(text));
+    return list.filter(item => item.data?.name?.toLowerCase().includes(text));
   }
 
   return (
     <>
     <div className="search-bar">
       <input type='text' value={searchText} onChange= {  // React uses 1 way binding, value from html should be set explicitly
-        (e) => setSearchText(e.target.value)
+        (e) => {
+          setSearchText(e.target.value);}
       }/>
       <button className="search-btn" onClick={() => {
-        newList = filterList(searchText, restaurantList);
+        newList = filterList(searchText, allRestaurants);
         setFilteredRestaurantList(newList);
       }}>search</button>
       
@@ -24,7 +42,7 @@ const Body = () => {
     <div className="restaurant-cards">
       {
         filteredRestaurants.map(res =>
-          <RestaurantCard {...res} key={res.cloudinaryImageId} />
+          <RestaurantCard {...res.data} key={res.data?.cloudinaryImageId} />
         )
       }
     </div>

@@ -3,3 +3,5 @@
 3. how jsx sanitizes code to prevent xss attack
 4. Shimmer UI
 5. JS fetch
+6. super(props) in class based components
+7. why can I make componentDidMount async and not useEffect
