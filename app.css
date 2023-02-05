@@ -23,23 +23,50 @@
 .restaurant-card {
   margin: 20px;
   padding: 10px;
-  border: 1px solid black;
+  border: 1px solid #e8e8e8;
   width: 200px;
 }
 .restaurant-card > img{
   width: 200px
 }
 
-.restaurant-cards {
+.restaurant-cards, .shimmer-container, .restaurant-details {
   display: flex;
   flex-wrap: wrap;
 }
 
 .search-bar {
-  margin-top: 10px;
-  margin-left: 10px;
+  margin-top: 20px;
+  margin-left: 19px;
 }
 
 .search-btn {
   margin-left: 10px;
+}
+
+.shimmer-card {
+  width: 200px;
+  background-color: #e8e8e8;
+  margin: 20px;
+  padding: 10px;
+  height: 300px;
+}
+
+.footer {
+  border: 1px solid black;
+  width: 100%;
+  margin-top: 15px;
+}
+
+.footer > h3{
+  padding: 10px;
+}
+
+.restaurant-img {
+  margin: 15px 15px 15px 0px;
+  width: 400px;
+}
+
+.restaurant-menu {
+  margin-top: 90px
 }
